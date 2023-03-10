@@ -158,7 +158,7 @@ class Posts
      * @return array
      */
     public static function getAllPosts(){
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("
@@ -191,7 +191,7 @@ class Posts
      */
     public static function getPostById($id) {
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("
@@ -223,7 +223,7 @@ class Posts
      */
     public static function getPostsByPosted($visibility){
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("
@@ -258,7 +258,7 @@ class Posts
      */
     public function addPost() {
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Préparation de la requête
         $req = $bdd->getDb()->prepare("INSERT INTO posts(title,content,writer,image,date_post,posted) VALUES(:title,:content,:admin,:image,NOW(),:posted)");
@@ -277,7 +277,7 @@ class Posts
      */
     public function updatePost() {
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Préparation de la requête
         $req = $bdd->getDb()->prepare("UPDATE posts SET title = :title,content = :content,image = :image, date_post = NOW(),posted = :posted WHERE id = :id");
@@ -296,7 +296,7 @@ class Posts
      * @param id
      */
     public static function deletePost($id){
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Préparation de la requête
         $req = $bdd->getDb()->prepare("DELETE FROM posts WHERE id = :id");
@@ -311,7 +311,7 @@ class Posts
      */
     public static function countArticles(){
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         $req =  $req = $bdd->getDb()->query("SELECT COUNT(id) FROM posts");
         return $req->fetch();

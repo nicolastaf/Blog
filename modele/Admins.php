@@ -128,7 +128,7 @@ class Admins
      * @return array
      */
     public static function getAllAdmins(){
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("
@@ -155,7 +155,7 @@ class Admins
      * @return int
      */
     public static function getAdminByEmailAndPassword($email, $password) {
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("SELECT * FROM admins WHERE email = :email AND password = :password");
@@ -175,7 +175,7 @@ class Admins
      * @return Admins
      */
     public static function getAdminByEmail($email) {
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("SELECT * FROM admins WHERE email = :email");
@@ -194,7 +194,7 @@ class Admins
      * @return Admins
      */
     public static function getAdminById($id) {
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("SELECT * FROM admins WHERE id = :id");
@@ -213,7 +213,7 @@ class Admins
     public function addAdmin()
     {
 
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         $req = $bdd->getDb()->prepare("INSERT INTO admins(name,email,password,role) VALUES(:name,:email, :password, :role)");
 
@@ -231,7 +231,7 @@ class Admins
      */
     public static function countUsers(){
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         $req =  $req = $bdd->getDb()->query("SELECT COUNT(id) FROM admins");
         return $req->fetch();
@@ -242,7 +242,7 @@ class Admins
      */
     public function updateAdmins(){
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Préparation de la requête
         $req = $bdd->getDb()->prepare("UPDATE admins SET name = :name, email = :email, password = :password, code_user = :code_user, role = :role WHERE id = :id");

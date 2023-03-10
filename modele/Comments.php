@@ -157,7 +157,7 @@ class Comments
         // Recuperation du post associe
         $post = Posts::getPostById($id);
 
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("SELECT * FROM comments WHERE post_id = :id AND seen = :seen ORDER BY date_comment DESC");
@@ -186,7 +186,7 @@ class Comments
     public static function getCommentsBySeen($seen){
         // Recuperation du post associe
 
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("SELECT * FROM comments WHERE seen = :seen ORDER BY date_comment DESC");
@@ -214,7 +214,7 @@ class Comments
     public static function getCommentsById($id){
         // Recuperation du post associe
 
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Preparation de la requete
         $req = $bdd->getDb()->prepare("SELECT * FROM comments WHERE id = :id ORDER BY date_comment DESC");
@@ -234,7 +234,7 @@ class Comments
      * Fonction permettant d'ajouter un commentaire
      */
     public function addComment(){
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Préparation de la requête
         $req = $bdd->getDb()->prepare("INSERT INTO comments(name, email, comment, post_id, date_comment) VALUES(:name, :email, :comment, :post_id, NOW())");
@@ -250,7 +250,7 @@ class Comments
      */
     public function updateComment(){
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Préparation de la requête
         $req = $bdd->getDb()->prepare("UPDATE comments SET name = :name, email = :email, comment = :comment, seen = :seen WHERE id = :id");
@@ -269,7 +269,7 @@ class Comments
      */
     public function updateCommentSeen(){
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Préparation de la requête
         $req = $bdd->getDb()->prepare("UPDATE comments SET seen = '1' WHERE id = :id");
@@ -288,7 +288,7 @@ class Comments
      * @param $id
      */
     public static function deleteComment($id){
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         // Préparation de la requête
         $req = $bdd->getDb()->prepare("DELETE FROM comments WHERE id = :id");
@@ -305,7 +305,7 @@ class Comments
      */
     public static function countComments(){
         // Connection à la base de donnees
-        $bdd = new DatabaseConnector('nicolassjcwpopen','nicolassjcwpopen.mysql.db', 'nicolassjcwpopen','Tomlea23');
+        $bdd = new DatabaseConnector('root','root.mysql.db', 'root','password');
 
         $req = $bdd->getDb()->query("SELECT COUNT(id) FROM comments");
         return $req->fetch();
